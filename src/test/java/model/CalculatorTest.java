@@ -9,12 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
+    Random randomGenerator = new Random(13);
+
     @Test
     @DisplayName("sum of two numbers")
     void add() {
-        float x = Calculator.add(7, 3);
-        assertEquals(10, x);
-        assertNotEquals(11, x);
+        for (int i = 0; i < 100; i++) {
+            float x = randomGenerator.nextFloat();
+            float y = randomGenerator.nextFloat();
+            assertEquals(x+y, Calculator.add(x, y));
+        }
     }
 
     @Test
